@@ -1,8 +1,12 @@
 git clone https://github.com/opencr/docker-ngrok.git
+
 cd docker-ngrok
+
 docker build -f ./Dockerfile -t liuhenghuo/ngrok:latest .
+
 启动容器生成ngrok客户端
 docker run --rm -it -e DOMAIN="ng.l0411.com" -v /data/ngrok:/myfiles liuhenghuo/ngrok sh /build.sh
+
 启动容器
 docker run -idt --name ngrok-server \
 -v /data/ngrok:/myfiles \
@@ -18,6 +22,7 @@ tunnels:
   test:
     proto:
       http: 80
+
 启动客户端命令
 ngrok -config ngrok.cfg start test            #启动指定转发配置
 ngrok -config ngrok.cfg start-all             #启动全部转发配置
